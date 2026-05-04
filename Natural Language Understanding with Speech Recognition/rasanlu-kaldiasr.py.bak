@@ -1,0 +1,32 @@
+#!/usr/bin/env python
+
+ import kaldi_asr
+import rasa.nlu
+
+# Load KALDI ASR model
+model = kaldi_asr.Model("path/to/kaldi/model")
+
+# Load RASA NLU model
+nlp = rasa.nlu.load("path/to/rasa/model")
+
+# Load GPSR dataset
+gpsr_dataset = load_gpsr_dataset("path/to/gpsr/dataset")
+
+# Evaluate the accuracy
+total_count = 0
+correct_count = 0
+for example in gpsr_dataset:
+    # Convert speech to text using KALDI ASR
+    text = model.transcribe(example["speech"])
+    
+    # Predict intent and entities using RASA NLU
+    prediction = nlp.parse(text)
+    
+    # Compare the prediction with the ground truth
+    total_count += 1
+    if prediction["intent"]["name"] == example["intent"] and all(p["entity"] == t["entity"] for p, t in zip(prediction["entities"], example["entities"])):
+        correct_count += 1
+
+# Print the accuracy
+accuracy = correct_count / total_count
+print("Accuracy: {:.2f}%".format(accuracy * 100))

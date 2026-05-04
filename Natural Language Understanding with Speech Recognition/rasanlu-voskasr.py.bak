@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+
+
+## integração VOSK and RASA com a base de dados GPSR
+ 
+import vosk
+import rasa
+
+# Inicialize o modelo ASR usando VOSK
+asr = vosk.Model("path/to/vosk-model")
+
+# Inicialize o modelo NLU usando o Rasa
+nlu = rasa.load("path/to/rasa-model")
+
+# Obtenha a entrada de fala do usuário
+speech_input = "What is the weather like today?"
+
+# Utilizar VOSK para transcrever a entrada de fala
+text = asr.Recognize(speech_input)
+
+# Use Rasa to predict the intent
+predicted_intent = nlu.parse(text)
+
+# Evaluate the accuracy of the model
+if predicted_intent == actual_intent:
+    accuracy = 1
+else:
+    accuracy = 0
+
+# Output the result of the accuracy
+print("Accuracy:", accuracy)
