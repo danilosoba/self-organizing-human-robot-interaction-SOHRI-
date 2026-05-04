@@ -1,15 +1,7 @@
-# ROS package for Self-Organizing Human-Robot Interaction (SOHRI),  
+# ROS package for Self-Organizing Human-Robot Interaction (SOHRI) 
 
 **PhD Thesis:**  
 *Self-Organizing Neural Models for self-organizing human-robot interaction (SOHRI),*  
-
----
-
-Original repository: https://github.com/mikeferguson/pocketsphinx  
-
-Also used repo: https://github.com/gorinars/ros_voice_control  
-
-You can know more about PocketSphinx here: https://cmusphinx.github.io/  
 
 ---
 
